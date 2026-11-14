@@ -370,13 +370,20 @@ function closeGuide(){
 }
 document.querySelectorAll(".category-card").forEach(btn=>btn.addEventListener("click",()=>{
   const category=btn.dataset.category;
-  document.querySelectorAll(".popular-item").forEach(item=>{
-    item.hidden=item.dataset.topicCategory!==category;
+  document.querySelectorAll(".popular-row").forEach(row=>{
+    const item=row.querySelector(".popular-item");
+    const visible=!!item && item.dataset.topicCategory===category;
+    if(item) item.hidden=!visible;
+    row.hidden=!visible;
   });
   document.querySelector(".popular").scrollIntoView({behavior:"smooth",block:"start"});
 }));
 $("#showAllTopics").addEventListener("click",()=>{
-  document.querySelectorAll(".popular-item").forEach(item=>{item.hidden=false;});
+  document.querySelectorAll(".popular-row").forEach(row=>{
+    row.hidden=false;
+    const item=row.querySelector(".popular-item");
+    if(item) item.hidden=false;
+  });
 });
 document.querySelectorAll("[data-quick]").forEach(btn=>btn.addEventListener("click",()=>{const id=btn.dataset.quick;if(id==="mynumber-lost"){window.location.href="guide-mynumber-lost.html";return;}if(id==="work-insurance"){window.location.href="guide-work-insurance.html";return;}if(id.startsWith("work-")){window.location.href="guide-work-issues.html#"+id;return;}if(id.startsWith("money-")){window.location.href="guide-money-issues.html#"+id;return;}if(id.startsWith("shopping-")){window.location.href="guide-shopping-issues.html#"+id;return;}if(id==="electric"){window.location.href="guide-electric.html";return;}if(id==="cleaning"){window.location.href="guide-cleaning.html";return;}if(id==="security"){window.location.href="guide-security.html";return;}if(id==="waste"){window.location.href="guide-waste.html";return;}if(id==="movingservice"){window.location.href="guide-moving-service.html";return;}openGuide(id);}));
 $("#languageSelect").addEventListener("change",e=>{
