@@ -23,3 +23,10 @@ https://local-life-lab.github.io/supreme-guacamole/guide-money-issues.html
 https://local-life-lab.github.io/supreme-guacamole/guide-shopping-issues.html
 https://local-life-lab.github.io/supreme-guacamole/guide-mynumber-lost.html
 https://local-life-lab.github.io/supreme-guacamole/guide-work-insurance.html
+https://local-life-lab.github.io/supreme-guacamole/index-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-mynumber-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-health-insurance-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-work-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-gas-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-money-en.html
+https://local-life-lab.github.io/supreme-guacamole/guide-shopping-en.html
