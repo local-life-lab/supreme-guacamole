@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kouki-bot.github.io/supreme-guacamole/sitemap.xml
-Sitemap: https://kouki-bot.github.io/supreme-guacamole/sitemap.txt
+Sitemap: https://local-life-lab.github.io/supreme-guacamole/sitemap.xml
+Sitemap: https://local-life-lab.github.io/supreme-guacamole/sitemap.txt
