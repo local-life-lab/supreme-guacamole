@@ -51,3 +51,6 @@
 .popular-row .popular-item{border-bottom:0}
 .popular-row .favorite-toggle{align-self:flex-start;margin:0 0 10px 55px}
 @media(max-width:700px){.popular-row .favorite-toggle{margin-left:35px}}
+
+/* Previous-question navigation */
+.question-back{display:block;margin:0 0 14px;font-size:12px;padding:5px 0;color:var(--brown);}
