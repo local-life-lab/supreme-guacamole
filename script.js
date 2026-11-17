@@ -329,6 +329,20 @@ function openGuide(id){
 function renderQuestion(){
   const q=currentGuide.questions[currentStep];
   $("#stepLabel").textContent=`${tr("step")} ${currentStep+1} / ${currentGuide.questions.length}`;
+  const backOne=$("#backOneQuestion");
+  if(currentStep>0){
+    if(!backOne){
+      const button=document.createElement("button");
+      button.id="backOneQuestion";
+      button.className="back-button question-back";
+      button.type="button";
+      button.addEventListener("click",()=>{if(currentStep>0){currentStep--;renderQuestion();}});
+      $("#stepLabel").insertAdjacentElement("afterend",button);
+    }
+    const labels={ja:"← 一つ戻る",en:"← Previous question",zh:"← 返回上一题",vi:"← Quay lại câu trước",ko:"← 이전 질문"};
+    $("#backOneQuestion").textContent=labels[currentLang]||labels.ja;
+    $("#backOneQuestion").hidden=false;
+  }else if(backOne){backOne.hidden=true;}
   $("#questionTitle").textContent=q.q[currentLang]||q.q.ja;
   const box=$("#answerOptions"); box.innerHTML="";
   q.a.forEach((answer,index)=>{
