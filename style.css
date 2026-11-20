@@ -54,3 +54,13 @@
 
 /* Previous-question navigation */
 .question-back{display:block;margin:0 0 14px;font-size:12px;padding:5px 0;color:var(--brown);}
+
+
+/* Search-friendly, crawlable guide directory */
+.guide-directory{padding-top:38px;padding-bottom:48px}
+.guide-directory-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px;list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.guide-directory-list li{border-bottom:1px solid var(--line)}
+.guide-directory-list a{display:block;padding:13px 4px;color:var(--deep);font-size:13px;line-height:1.65;text-decoration:none}
+.guide-directory-list a:after{content:" ↗";color:var(--brown);white-space:nowrap}
+.guide-directory-list a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){.guide-directory-list{grid-template-columns:1fr;gap:0}.guide-directory{padding-top:30px;padding-bottom:38px}}
