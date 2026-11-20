@@ -2,6 +2,7 @@
   "use strict";
   const KEY="kurashiNaviFavoritesV1";
   const FREE_LIMIT=2;
+  const track=(name,params={})=>{if(typeof window.gtag==="function")window.gtag("event",name,params);};
   const read=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(v)?v:[]}catch(_){return[]}};
   const write=(items)=>{try{localStorage.setItem(KEY,JSON.stringify(items));return true}catch(_){return false}};
   const titles={
@@ -27,16 +28,17 @@
     items.forEach(item=>{
       const li=document.createElement("li"),a=document.createElement("a"),del=document.createElement("button");
       a.href=item.url;a.textContent=item.title;del.type="button";del.className="favorite-remove";del.textContent="削除";del.setAttribute("aria-label",item.title+"をお気に入りから削除");
-      del.addEventListener("click",()=>{remove(item.id);refresh();});li.append(a,del);list.append(li);
+      del.addEventListener("click",()=>{remove(item.id);track("favorite_remove",{problem_id:item.id,source:"favorites_list"});refresh();});li.append(a,del);list.append(li);
     });
   };
   document.addEventListener("click",e=>{
     const b=e.target.closest("[data-favorite-id]");if(!b)return;e.preventDefault();e.stopPropagation();
     const id=b.dataset.favoriteId;const exists=read().some(x=>x.id===id);
-    if(exists){remove(id);}else{
+    if(exists){remove(id);track("favorite_remove",{problem_id:id,source:"favorite_button"});}else{
       const result=save(id,b.dataset.favoriteTitle,b.dataset.favoriteUrl);
-      if(result==="limit")alert("無料で保存できるのは2件までです。保存済みの項目を削除すると、新しい項目を保存できます。");
-      else if(result==="error")alert("保存できませんでした。ブラウザの設定をご確認ください。");
+      if(result==="saved")track("favorite_add",{problem_id:id,saved_count:read().length,free_limit:FREE_LIMIT});
+      else if(result==="limit"){track("favorite_limit_reached",{problem_id:id,saved_count:read().length,free_limit:FREE_LIMIT});alert("無料で保存できるのは2件までです。保存済みの項目を削除すると、新しい項目を保存できます。");}
+      else if(result==="error"){track("favorite_storage_error",{problem_id:id});alert("保存できませんでした。ブラウザの設定をご確認ください。");}
     }
     refresh();
   },true);
