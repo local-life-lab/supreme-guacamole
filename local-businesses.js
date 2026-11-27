@@ -92,6 +92,12 @@
     results.setAttribute("aria-live", "polite");
     section.appendChild(results);
 
+    const partnerLink = document.createElement("a");
+    partnerLink.className = "local-company-partner-link";
+    partnerLink.href = "business-partners.html";
+    partnerLink.textContent = "事業者の方へ｜掲載について";
+    section.appendChild(partnerLink);
+
     function updateResults() {
       results.replaceChildren();
       const prefecture = select.value;
