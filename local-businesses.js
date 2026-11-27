@@ -16,7 +16,8 @@
    * 登録データの形式：
    * {
    *   id, name, prefecture, cities: [], category, description,
-   *   phone, website, verified: true, permission: true, status: "published"
+   *   phone, website, verified: true, permission: true, status: "published",
+   *   wastePermitVerified: true（家庭ごみ回収を扱う場合は必須）
    * }
    * verified・permission・status の条件を満たさない企業は表示しない。
    */
@@ -24,7 +25,11 @@
 
   const SERVICE_BY_GUIDE = {
     leak: { category: "plumbing", label: "水道修理・水漏れ対応" },
-    gasstove: { category: "gas-appliance", label: "ガス機器・コンロの点検や修理" }
+    gasstove: { category: "gas-appliance", label: "ガス機器・コンロの点検や修理" },
+    cleaning: { category: "cleaning", label: "ハウスクリーニング" },
+    security: { category: "locksmith", label: "鍵・防犯サービス" },
+    waste: { category: "waste-management", label: "不用品・粗大ごみの処分" },
+    movingservice: { category: "moving", label: "引っ越しサービス" }
   };
 
   function safeExternalUrl(value) {
@@ -52,18 +57,18 @@
     section.className = "local-company-section";
     section.setAttribute("aria-labelledby", "localCompanyTitle");
 
-    addText(section, "h4", "local-company-heading", "地域の専門業者を探す");
+    addText(section, "h4", "local-company-heading", service.label + "の相談先を探す");
     addText(section, "p", "local-company-description",
       "必要に応じて、お住まいの都道府県で相談先を確認できます。掲載企業は情報と掲載許可を確認した事業者に限ります。");
 
     const label = document.createElement("label");
     label.className = "local-company-label";
-    label.htmlFor = "localCompanyPrefecture";
+    label.htmlFor = "localCompanyPrefecture-" + guideId;
     label.textContent = "都道府県を選択";
     section.appendChild(label);
 
     const select = document.createElement("select");
-    select.id = "localCompanyPrefecture";
+    select.id = "localCompanyPrefecture-" + guideId;
     select.className = "local-company-select";
     const placeholder = document.createElement("option");
     placeholder.value = "";
@@ -100,7 +105,8 @@
         company.category === service.category &&
         company.verified === true &&
         company.permission === true &&
-        company.status === "published"
+        company.status === "published" &&
+        (company.category !== "waste-management" || company.wastePermitVerified === true)
       );
 
       if (!matches.length) {
