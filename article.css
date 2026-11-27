@@ -15,3 +15,6 @@
 .local-company-meta{color:#71665b}
 .local-company-link{display:inline-block;margin:8px 12px 4px 0;color:#80664f;font-size:13px;font-weight:700}
 .local-company-disclosure{margin:10px 0 0;color:#8c8176;font-size:11px}
+
+.local-company-partner-link{display:inline-block;margin-top:14px;color:#80664f;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.local-company-partner-link:hover{color:#59432f}
