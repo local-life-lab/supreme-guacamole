@@ -64,3 +64,18 @@
 .guide-directory-list a:after{content:" ↗";color:var(--brown);white-space:nowrap}
 .guide-directory-list a:hover{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){.guide-directory-list{grid-template-columns:1fr;gap:0}.guide-directory{padding-top:30px;padding-bottom:38px}}
+
+/* Prefecture-based local company directory */
+.local-company-section{margin:26px 0 8px;padding:20px;background:#fbf8f2;border:1px solid var(--line);border-radius:16px}
+.local-company-heading{margin:0 0 8px;font-size:17px;color:var(--deep)}
+.local-company-description,.local-company-empty{font-size:13px;line-height:1.8;color:var(--muted)}
+.local-company-label{display:block;margin:16px 0 7px;font-size:13px;font-weight:700;color:var(--deep)}
+.local-company-select{display:block;width:100%;max-width:420px;min-height:46px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--deep);font:inherit}
+.local-company-results{margin-top:14px}
+.local-company-empty{margin:0;padding:14px;background:#fff;border-radius:10px}
+.local-company-card{margin:10px 0;padding:15px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.local-company-card h5{margin:0 0 8px;font-size:15px;color:var(--deep)}
+.local-company-card p{font-size:13px;line-height:1.7}
+.local-company-meta{color:var(--muted)}
+.local-company-link{display:inline-block;margin:8px 12px 4px 0;color:var(--brown);font-size:13px;font-weight:700}
+.local-company-disclosure{margin:10px 0 0;color:var(--muted);font-size:11px}
