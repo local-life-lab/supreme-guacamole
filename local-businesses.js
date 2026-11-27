@@ -55,9 +55,10 @@
 
     const section = document.createElement("section");
     section.className = "local-company-section";
-    section.setAttribute("aria-labelledby", "localCompanyTitle");
+    section.setAttribute("aria-labelledby", "localCompanyTitle-" + guideId);
 
-    addText(section, "h4", "local-company-heading", service.label + "の相談先を探す");
+    const heading = addText(section, "h4", "local-company-heading", service.label + "の相談先を探す");
+    heading.id = "localCompanyTitle-" + guideId;
     addText(section, "p", "local-company-description",
       "必要に応じて、お住まいの都道府県で相談先を確認できます。掲載企業は情報と掲載許可を確認した事業者に限ります。");
 
