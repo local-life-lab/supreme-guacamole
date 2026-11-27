@@ -375,6 +375,7 @@ function showResult(){
     <details class="result-answers"><summary>${tr("yourAnswers")}</summary><ul>${selected}</ul></details>
     <p class="result-source"><a href="${r.source}" target="_blank" rel="noopener noreferrer">${(r.sourceLabel[lang]||r.sourceLabel.ja)} ↗</a></p>
     <div class="result-actions"><button class="small-action" id="restartButton">${tr("restart")}</button><button class="small-action" id="backToCategories">${tr("back")}</button></div>`;
+  if (typeof window.renderLocalCompanySection === "function") window.renderLocalCompanySection(currentGuideId, card);
   $("#restartButton").onclick=()=>{currentStep=0;selectedAnswers=[];card.hidden=true;$("#questionCard").hidden=false;renderQuestion();};
   $("#backToCategories").onclick=closeGuide;
 }
